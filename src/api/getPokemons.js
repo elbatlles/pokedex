@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import axios from "../services/axios";
+import {toggleLoader} from "../actions";
 
 export const getPokemons = () => {
   return axios({
@@ -9,15 +11,16 @@ export const getPokemons = () => {
   });
 };
 export const getPokemonWithDetails = () => {
-
+  
   return getPokemons().then((response) => {
 
-    // dispatch(setPokemon(response.results));
+     
     const pokemonList = response.results;
 
     return Promise.all(
       pokemonList.map((pokemon) => axios.get(pokemon.url))
     ).then((Pokemonresponse) => {
+      
        return Pokemonresponse.map((pokemon) => pokemon.data);
 
     });

@@ -3,11 +3,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Message } from "semantic-ui-react";
 import { clearError } from "../../actions";
+ import Loader from "../Loader";
 import Menu from "../Menu";
+
 import "./styles.css";
 
 const Layout = ({ children }) => {
   const errorMessage = useSelector((state) => state.error);
+  const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
 
   const handleDismiss = () => {
@@ -26,6 +29,7 @@ const Layout = ({ children }) => {
           />
         </div>
       )}
+    {loading && <Loader  /> }  
       <div className="Layout-content">{children}</div>
     </div>
   );

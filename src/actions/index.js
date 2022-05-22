@@ -1,4 +1,4 @@
-import { CLEAR_ERROR, FETCH_POKEMONS, SET_ERROR, SET_POKEMONS } from "./type";
+import { CLEAR_ERROR, FAV_POKEMON, FETCH_POKEMONS, SET_ERROR, SET_POKEMONS, TOOGLE_LOADER } from "./type";
 import { getPokemons } from "../api/getPokemons";
 import axios from "axios";
 
@@ -19,21 +19,38 @@ export const clearError = (payload) => ({
 });
 
 export const getPokemonWithDetails = () => (dispatch, getState) => {
+  dispatch(toggleLoader());
   getPokemons().then((response) => {
-    console.log("aa");
-    // dispatch(setPokemon(response.results));
+    
     const pokemonList = response.results;
     return Promise.all(
       pokemonList.map((pokemon) => axios.get(pokemon.url))
     ).then((Pokemonresponse) => {
       const pokemonData = Pokemonresponse.map((pokemon) => pokemon.data);
       console.log(Pokemonresponse);
-      dispatch(setPokemon(pokemonData));
+       dispatch(setPokemon(pokemonData));
+       dispatch(toggleLoader());
     });
   });
+  
 };
+
+export const favPokemon = (payload) => {
+  console.log('aaa',payload);
+   
+  return {
+    type: FAV_POKEMON,
+    payload
+  };
+
+};
+
 export const fetchPokemons = () => ({
   type: FETCH_POKEMONS,
+});
+
+export const toggleLoader = () => ({
+  type: TOOGLE_LOADER,
 });
 /*  getPokemons().then((response) => {
       // dispatch(setPokemon(response.results));
