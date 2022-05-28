@@ -9,8 +9,10 @@ import Menu from "../Menu";
 import "./styles.css";
 
 const Layout = ({ children }) => {
-  const errorMessage = useSelector((state) => state.error);
-  const loading = useSelector((state) => state.loading);
+ 
+  const errorMessage = useSelector((state) => state.get('error'));
+  const loading = useSelector((state) => state.getIn(['ui','loading']));
+ 
   const dispatch = useDispatch();
 
   const handleDismiss = () => {

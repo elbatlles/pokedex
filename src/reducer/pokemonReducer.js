@@ -4,9 +4,7 @@ import { SET_POKEMONS,TOOGLE_LOADER ,FAV_POKEMON} from "../actions/type";
 
 const initialState = fromJS({
   list: [],
-  loading: false,
-  error: null,
-  favorite:[]
+ 
 });
 
 const pokemonReducer = (state = initialState, action) => {
@@ -14,13 +12,7 @@ const pokemonReducer = (state = initialState, action) => {
  // console.log( state.get('loading'));
   console.log('ssss')
   switch (action.type) {
-    
-    case SET_POKEMONS:
-      return state.setIn(['list'], fromJS(action.payload));// return {
-      //   ...state,
-      //   list: action.payload,
-      // }; 
-      case FAV_POKEMON:
+    case FAV_POKEMON:
       const currentPokemonIndex = state
         .get('list')
         .findIndex((elem) => elem.get('id') === action.payload);
@@ -34,9 +26,9 @@ const pokemonReducer = (state = initialState, action) => {
         ['list', currentPokemonIndex, 'favorite'],
         !isFavorite
       );
-      case TOOGLE_LOADER: 
-      const isLoading = state.get('loading')
-      return state.set('loading',!isLoading)
+    case SET_POKEMONS:
+      return state.setIn(['list'], fromJS(action.payload));// return {
+      
  
       default:
       return state

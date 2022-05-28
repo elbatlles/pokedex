@@ -9,10 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 function Home() {
   const dispatch = useDispatch();
   //const list = useSelector((state) => state.list);
-  const list = useSelector((state) => state.get('list')).toJS();
+ //const list = useSelector((state) => state.pokemon.get('list')).toJS();
+  const list = useSelector((state) => state.getIn(['pokemon','list'])).toJS();
+  
   //const loading = useSelector((state) => state.loading);
-  const loading = useSelector((state) => state.get('loading'));
-  console.log(loading)
+  const loading = useSelector((state) => state.getIn(['ui','loading']));
+  console.log(loading,'loading');
   console.log(list);
   useEffect(() => {
    // dispatch(getPokemonWithDetails());
