@@ -10,7 +10,7 @@ import "./styles.css";
 
 const Layout = ({ children }) => {
   const errorMessage = useSelector((state) => state.error);
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.ui.loading);
   const dispatch = useDispatch();
 
   const handleDismiss = () => {

@@ -10,7 +10,7 @@ export const getPokemons = () => {
     return response.data;
   });
 };
-export const getPokemonWithDetails = () => {
+export const getPokemonsWithDetails = () => {
   
   return getPokemons().then((response) => {
 

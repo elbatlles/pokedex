@@ -2,13 +2,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import { Image, Label, Grid, Icon } from "semantic-ui-react";
-import { favPokemon } from "../../actions";
+import { setFavorite } from "../../slices/pokemon";
 import { MAIN_COLOR, FAV_COLOR } from "../../utils/constants";
 import "./styles.css";
 function PokemonCard({ pokemon }) {
   const dispatch = useDispatch();
   const handlerClickFav = () => {
-    dispatch(favPokemon(pokemon.id));
+    dispatch(setFavorite(pokemon.id));
 console.log(pokemon)
   }
   const color = pokemon.favorite ? FAV_COLOR : MAIN_COLOR;
