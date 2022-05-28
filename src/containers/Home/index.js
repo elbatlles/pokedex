@@ -8,8 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Home() {
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.list);
-  const loading = useSelector((state) => state.loading);
+  //const list = useSelector((state) => state.list);
+  const list = useSelector((state) => state.get('list')).toJS();
+  //const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.get('loading'));
   console.log(loading)
   console.log(list);
   useEffect(() => {
