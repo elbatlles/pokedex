@@ -8,8 +8,6 @@ const initialState = {
 };
 
 const pokemonReducer = (state = initialState, action) => {
-  console.log(action.payload);
-  console.log("ssss");
   switch (action.type) {
     case SET_POKEMONS:
       return {
@@ -18,7 +16,6 @@ const pokemonReducer = (state = initialState, action) => {
       };
 
     case TOOGLE_LOADER:
-      console.log("pasem pel toogle");
       return {
         ...state,
         loading: !state.loading,

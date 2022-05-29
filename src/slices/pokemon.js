@@ -43,7 +43,6 @@ export const pokemonSlice = createSlice({
     },
     findPokemon: (state, action) => {
       const list = state.listAux.filter((pokemon) => {
-        console.log(pokemon);
         return pokemon.name
           .toLowerCase()
           .includes(action.payload.toLowerCase());

@@ -9,7 +9,6 @@ function PokemonCard({ pokemon }) {
   const dispatch = useDispatch();
   const handlerClickFav = () => {
     dispatch(setFavorite(pokemon.id));
-    console.log(pokemon);
   };
   const color = pokemon.favorite ? FAV_COLOR : MAIN_COLOR;
   return (

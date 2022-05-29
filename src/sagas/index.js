@@ -9,7 +9,7 @@ function* fetchPokemonWithDetails(action) {
     yield call(toggleLoader, action.payload);
     const response = yield call(getPokemonsWithDetails, action.payload);
     yield call(toggleLoader, action.payload);
-    console.log(response);
+
     yield put(setPokemon(response));
   } catch (error) {
     yield put({ type: "FETCH_USER_FAILURE", payload: error });

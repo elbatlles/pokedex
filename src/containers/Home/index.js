@@ -8,9 +8,7 @@ import { fetchPokemons } from "../../slices/pokemon";
 function Home() {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.pokemon.list);
-  const loading = useSelector((state) => state.ui.loading);
-  console.log(loading);
-  console.log(list);
+
   useEffect(() => {
     dispatch(fetchPokemons());
   }, [dispatch]);
