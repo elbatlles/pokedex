@@ -9,16 +9,16 @@ function PokemonCard({ pokemon }) {
   const dispatch = useDispatch();
   const handlerClickFav = () => {
     dispatch(setFavorite(pokemon.id));
-console.log(pokemon)
-  }
+    console.log(pokemon);
+  };
   const color = pokemon.favorite ? FAV_COLOR : MAIN_COLOR;
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
       <div className={"PokemonCard"}>
         <button onClick={handlerClickFav} className="PokemonCard-favorite">
-        <Icon name={"favorite"} color={color} />
+          <Icon name={"favorite"} color={color} />
         </button>
-      
+
         <Image
           centered
           src={pokemon.sprites.front_default}
